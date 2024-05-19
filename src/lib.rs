@@ -1854,6 +1854,10 @@ link! {
 
     pub fn clang_CXXConstructor_isMoveConstructor(cursor: CXCursor) -> c_uint;
 
+    pub fn clang_Cursor_Evaluate(cursor: CXCursor) -> CXEvalResult;
+    pub fn clang_Cursor_getCXXManglings(cursor: CXCursor) -> *mut CXStringSet;
+     pub fn clang_Cursor_getObjCManglings(cursor: CXCursor) -> *mut CXStringSet;
+
 
     pub fn clang_CXXField_isMutable(cursor: CXCursor) -> c_uint;
     pub fn clang_CXXMethod_isConst(cursor: CXCursor) -> c_uint;
