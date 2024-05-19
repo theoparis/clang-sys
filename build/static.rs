@@ -80,7 +80,7 @@ fn find() -> PathBuf {
     let name = if target_os!("windows") {
         "libclang.lib"
     } else {
-        "libclang.a"
+        "libclangSupport.a"
     };
 
     let files = common::search_libclang_directories(&[name.into()], "LIBCLANG_STATIC_PATH");
@@ -126,13 +126,7 @@ pub fn link() {
 
     // Specify required system libraries.
     // MSVC doesn't need this, as it tracks dependencies inside `.lib` files.
-    if cfg!(target_os = "freebsd") {
-        println!("cargo:rustc-flags=-l ffi -l ncursesw -l c++ -l z");
-    } else if cfg!(any(target_os = "haiku", target_os = "linux")) {
-        println!("cargo:rustc-flags=-l ffi -l ncursesw -l stdc++ -l z");
-    } else if cfg!(target_os = "macos") {
-        println!("cargo:rustc-flags=-l ffi -l ncurses -l c++ -l z");
-    }
+    println!("cargo:rustc-flags=-l c++");
 
     cep.discard();
 }
