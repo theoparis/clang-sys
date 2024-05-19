@@ -1110,7 +1110,7 @@ cenum! {
         /// Only produced by `libclang` 11.0 and later.
         const CXType_Atomic = 177,
         /// Only produced by `libclang` 15.0 and later.
-        const CXType_BTFTagAttributed = 178,        
+        const CXType_BTFTagAttributed = 178,
     }
 }
 
@@ -1919,12 +1919,10 @@ link! {
     pub fn clang_CompileCommands_getSize(command: CXCompileCommands) -> c_uint;
     /// Only available on `libclang` 3.9 and later.
     #[cfg(feature = "clang_3_9")]
-    pub fn clang_Cursor_Evaluate(cursor: CXCursor) -> CXEvalResult;
     pub fn clang_Cursor_getArgument(cursor: CXCursor, index: c_uint) -> CXCursor;
     pub fn clang_Cursor_getBriefCommentText(cursor: CXCursor) -> CXString;
     /// Only available on `libclang` 3.8 and later.
     #[cfg(feature = "clang_3_8")]
-    pub fn clang_Cursor_getCXXManglings(cursor: CXCursor) -> *mut CXStringSet;
     pub fn clang_Cursor_getCommentRange(cursor: CXCursor) -> CXSourceRange;
     /// Only available on `libclang` 3.6 and later.
     #[cfg(feature = "clang_3_6")]
@@ -1937,7 +1935,6 @@ link! {
     pub fn clang_Cursor_getObjCDeclQualifiers(cursor: CXCursor) -> CXObjCDeclQualifierKind;
     /// Only available on `libclang` 6.0 and later.
     #[cfg(feature = "clang_6_0")]
-    pub fn clang_Cursor_getObjCManglings(cursor: CXCursor) -> *mut CXStringSet;
     pub fn clang_Cursor_getObjCPropertyAttributes(cursor: CXCursor, reserved: c_uint) -> CXObjCPropertyAttrKind;
     /// Only available on `libclang` 8.0 and later.
     #[cfg(feature = "clang_8_0")]
